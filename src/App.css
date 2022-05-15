@@ -7,12 +7,15 @@
   box-flex-group: red;
   color: aliceblue;
 }
+
+.active {
+  text-decoration: line-through;
+}
 .main {
   width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   object-fit: contain;
   background-color: #615cc0;
   background-image: linear-gradient(315deg, #21a0da 0%, #0e215a 74%);
@@ -20,8 +23,8 @@
 
 .main-container {
   width: 90%;
-  max-width: 54rem;
-  margin: 12rem auto;
+  max-width: 30rem;
+  margin: 3rem auto;
 }
 
 .container {
@@ -38,16 +41,16 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-transform: capitalize;
 }
-.container_item h1 {
-  padding: 12px;
-  margin-top: 10px;
+.container_item h2 {
+  padding: 8px;
+
   border-bottom: 2px solid #132666;
 }
 
 .form-container {
-  width: 96%;
-  height: 9rem;
-  margin: 16px 12px;
+  width: 98%;
+  height: 6rem;
+  margin: 5px;
 }
 
 @media screen and (max-width: 600px) {
@@ -72,7 +75,6 @@
     margin: 10px auto;
   }
   .container_item h1 {
-    margin-top: 10px;
     font-size: 20px;
   }
 
@@ -90,21 +92,20 @@
   align-items: center;
 }
 .input {
+  width: 70%;
   border: none;
   padding: 12px;
   font-size: 20px;
-  text-transform: capitalize;
   outline: none;
 }
 
 .btn {
   width: 40px;
-  margin: 20px;
+  margin: 8px 20px;
 }
 .btn:hover,
 btn:active {
-  background-color: rgb(163, 64, 22);
-  color: rgb(39, 29, 29);
+  background-color: rgb(202, 213, 225);
   transition: 250ms;
 }
 .toggle {
@@ -114,13 +115,15 @@ btn:active {
 .input-data h3 {
   text-overflow: ellipsis;
   overflow: hidden;
+  padding: 2px;
 }
 .input-btn {
   flex-wrap: nowrap;
 }
-.input-data {
+
+.input-data_container {
+  min-width: 258px;
   display: flex;
-  justify-content: space-between;
   margin: 30px 20px;
   border: solid white;
   color: white;
@@ -128,21 +131,19 @@ btn:active {
   border-radius: 2px;
   align-items: center;
 }
-.btn-item {
-  font-size: 18px;
-  margin: 2px 5px;
-  padding: 2px 5px;
-  width: 50px;
-}
+.input-data {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 
-.EBTN {
-  background-color: rgb(90, 139, 16);
-  color: white;
-}
-.DBTN {
-  background-color: red;
-  color: white;
+  align-items: center;
 }
 .input-heading-data {
   min-width: 11rem;
+}
+.return-input {
+  min-width: 320px;
+}
+.radio-btn {
+  margin: 0;
 }

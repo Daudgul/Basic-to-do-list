@@ -4,6 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
 import AppComponent from "./AppComponent";
 import EditIcon from "@mui/icons-material/Edit";
+import Error from "./Error";
 
 const getItem = () => {
   let list = localStorage.getItem("lists");
@@ -20,6 +21,7 @@ function App() {
   const [toggleData, setToggleData] = useState(true);
   const [editText, setEditText] = useState(null);
   const [addDate, setAddDate] = useState("");
+  const [error, setError] = useState();
 
   const changeHendler = (e) => {
     setTaks(e.target.value);
@@ -46,7 +48,11 @@ function App() {
   const submitHandler = (a) => {
     a.preventDefault();
     if (task.trim().length < 1) {
-      alert("please add value");
+      setError({
+        title: "Invalid input",
+        message: "Please enter a valid name and age (non-empty values).",
+      });
+      return;
     } else if (task && !toggleData) {
       setData(
         data.map((e) => {
@@ -99,16 +105,26 @@ function App() {
     setEditText(id);
     setToggleData(false);
   };
+  const errorHandler = () => {
+    setError(null);
+  };
 
   return (
     <>
+      {error && (
+        <Error
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       <div className="main">
         <div className="main-container">
           <div className="container">
             <div className="container_item">
-              <h1>
+              <h2>
                 add your list here <FeaturedPlayListIcon />
-              </h1>
+              </h2>
               <div className="form-container">
                 <form onSubmit={submitHandler}>
                   <input
@@ -121,19 +137,11 @@ function App() {
 
                   {toggleData ? (
                     <button className="btn">
-                      <AddIcon
-                        fontSize="large"
-                        color="primary"
-                        aria-label="add"
-                      />
+                      <AddIcon color="primary" aria-label="add" />
                     </button>
                   ) : (
                     <button className="btn">
-                      <EditIcon
-                        fontSize="large"
-                        color="primary"
-                        aria-label="add"
-                      />
+                      <EditIcon color="primary" aria-label="add" />
                     </button>
                   )}
                 </form>
